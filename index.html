@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rahul & Priya — Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f8ff;
+      --card:#ffffff;
+      --accent:#0b63d3; /* deep blue */
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --maxwidth:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family: 'Lato', system-ui, Arial; background:linear-gradient(180deg,var(--bg),#eef5ff);color:#111}
+    .container{max-width:var(--maxwidth);margin:0 auto;padding:28px}
+    header.hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:34px 24px;border-radius:16px;margin-bottom:22px;background:linear-gradient(135deg, rgba(11,99,211,0.06), rgba(11,99,211,0.02));
+    }
+    .hero .left h1{font-family:'Playfair Display';font-size:40px;margin:0 0 6px;color:var(--accent)}
+    .hero .left p{margin:0 0 12px;color:var(--muted)}
+    .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:var(--card);box-shadow:0 6px 20px rgba(11,99,211,0.06);font-weight:700}
+    .hero .meta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .meta .item{background:var(--card);padding:10px 14px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.04);}
+    .hero .right{display:flex;flex-direction:column;gap:12px;align-items:center}
+    .hero img{width:100%;height:300px;object-fit:cover;border-radius:12px;box-shadow:0 12px 30px rgba(11,99,211,0.08)}
+
+    nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    nav a{color:var(--accent);text-decoration:none;padding:8px 12px;border-radius:8px}
+
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:28px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.04)}
+    h2{font-family:'Playfair Display';margin:0 0 12px}
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .event{display:flex;gap:12px;align-items:flex-start}
+    .event .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+
+    .events-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:12px}
+    .event-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(11,99,211,0.04)}
+    .event-card .title{font-weight:700;color:#0b3f8a}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+
+    .family-list{display:flex;flex-direction:column;gap:8px}
+    .family-item{display:flex;gap:12px;align-items:center}
+    .family-item img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+
+    form.rsvp{display:flex;flex-direction:column;gap:10px}
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid #e6eefc;font-size:15px}
+    button.cta{background:var(--accent);color:#fff;padding:12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+
+    footer{margin-top:22px;padding:18px;text-align:center;color:var(--muted)}
+
+    /* countdown */
+    .countdown{display:flex;gap:12px}
+    .countdown .box{background:var(--card);padding:12px;border-radius:8px;width:74px;text-align:center}
+    .countdown .num{font-weight:700;font-size:18px;color:var(--accent)}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){.gallery{grid-template-columns:repeat(1,1fr)}.hero img{height:220px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <a href="#story">Our Story</a>
+      <a href="#events">Events</a>
+      <a href="#family">Family</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#travel">Travel</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <header class="hero card">
+      <div class="left">
+        <div class="badge">Save the Date</div>
+        <h1>Rahul &amp; Priya</h1>
+        <p>Together with our families, we joyfully invite you to celebrate our wedding.</p>
+        <div class="meta">
+          <div class="item"><strong>📅</strong> December 15, 2025</div>
+          <div class="item"><strong>📍</strong> Taj Convention Center, Agra</div>
+          <div class="item" id="countdownWrap">
+            <div style="font-size:12px;color:var(--muted)">Countdown</div>
+            <div class="countdown" id="countdown"></div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d7f8e8f4b3a2bba62b1f5c6b1d4f6a7" alt="Couple Photo">
+        <a class="cta" href="#rsvp">RSVP Now</a>
+      </div>
+    </header>
+
+    <main class="two-col">
+      <section>
+        <article id="story" class="card">
+          <h2>Our Story</h2>
+          <div class="timeline">
+            <div>
+              <strong>How We Met</strong>
+              <p>It all started with a smile. Rahul and Priya met during college days in Agra, and a simple conversation turned into a beautiful friendship. Over time, friendship grew into love, and love turned into a promise of forever.</p>
+            </div>
+            <div>
+              <strong>The Proposal</strong>
+              <p>On a quiet evening by the riverside, Rahul surprised Priya with a heartfelt proposal. With laughter, tears, and a big “Yes!”, their forever journey began.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="events" class="card" style="margin-top:16px">
+          <h2>Event Details</h2>
+          <div class="events-grid">
+            <div class="event-card">
+              <div class="title">Sangeet Night</div>
+              <div>📅 December 13, 2025 • 🕗 7:00 PM</div>
+              <div>📍 Grand Milan Banquet, Agra</div>
+              <div>Dress Code: Traditional Glam</div>
+            </div>
+            <div class="event-card">
+              <div class="title">Wedding Ceremony</div>
+              <div>📅 December 15, 2025 • 🕛 11:00 AM (Baraat) | 1:00 PM (Pheras)</div>
+              <div>📍 Taj Convention Center, Agra</div>
+              <div>Dress Code: Ethnic Elegance</div>
+            </div>
+            <div class="event-card">
+              <div class="title">Reception</div>
+              <div>📅 December 16, 2025 • 🕗 8:00 PM</div>
+              <div>📍 Jaypee Palace Hotel, Agra</div>
+              <div>Dress Code: Formal</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="gallery" class="card" style="margin-top:16px">
+          <h2>Gallery</h2>
+          <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1520975917363-4b0d413c5b3a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=9b8a1f4d8b7f6c1c4e" alt="engagement">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8f0b7f34a1d5a2a5f1" alt="prewedding">
+            <img src="https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f4e9b6b5a6f3f9c6a"></img>
+          </div>
+        </article>
+
+      </section>
+
+      <aside>
+        <div id="family" class="card">
+          <h2>Our Families</h2>
+          <div class="family-list">
+            <div class="family-item"><img src="https://images.unsplash.com/photo-1608889174678-1bb0e6a6a7d1?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f7a8b1c" alt="family"> <div><strong>Priya’s Family</strong><div>Mr. &amp; Mrs. Sharma</div></div></div>
+            <div class="family-item"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2b4a7f1a" alt="family"> <div><strong>Rahul’s Family</strong><div>Mr. &amp; Mrs. Verma</div></div></div>
+          </div>
+        </div>
+
+        <div id="travel" class="card" style="margin-top:16px">
+          <h2>Travel &amp; Stay</h2>
+          <p><strong>Nearest Airport:</strong> Agra Airport (15 km)<br>
+          <strong>Nearest Railway:</strong> Agra Cantt (10 km)</p>
+          <p><strong>Hotels:</strong><br>Hotel Clarks Shiraz<br>Jaypee Palace Hotel<br>Radisson Blu</p>
+          <p>Shuttle service will be arranged from <em>Jaypee Palace</em> to the wedding venue.</p>
+          <div style="margin-top:10px"><a href="https://www.google.com/maps" target="_blank">Open map &rarr;</a></div>
+        </div>
+
+        <div id="rsvp" class="card" style="margin-top:16px">
+          <h2>RSVP</h2>
+          <form class="rsvp" onsubmit="return handleRSVP(event)">
+            <input type="text" id="name" placeholder="Your full name" required>
+            <input type="tel" id="phone" placeholder="Phone number" required>
+            <select id="attend" required>
+              <option value="">Will you attend?</option>
+              <option value="yes">Yes, I will attend</option>
+              <option value="no">No, unable to attend</option>
+            </select>
+            <input type="number" id="guests" placeholder="Number of guests (including you)" min="1" value="1" required>
+            <textarea id="message" rows="3" placeholder="Message or wishes (optional)"></textarea>
+            <button class="cta" type="submit">Confirm RSVP</button>
+            <div id="rsvpMessage" style="font-size:14px;color:var(--muted);margin-top:8px"></div>
+          </form>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2>Gifts & Wishes</h2>
+          <p>Your blessings are our greatest gift. If you wish to gift, you can use our registry or send wishes via the guestbook.</p>
+          <a href="#" class="cta" style="display:inline-block;margin-top:10px;text-decoration:none">View Registry</a>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <div>With love, <strong>Rahul &amp; Priya</strong> • December 15, 2025 • Agra</div>
+      <div style="margin-top:8px;color:var(--muted)">#RahulWedsPriya</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Countdown
+    const target = new Date('2025-12-15T11:00:00'); // change to your wedding time
+    function updateCountdown(){
+      const now = new Date();
+      const diff = target - now;
+      if(diff<=0){ document.getElementById('countdown').innerHTML = '<div class="box"><div class="num">0</div><div style="font-size:12px;color:var(--muted)">Days</div></div>' ; return }
+      const days = Math.floor(diff/ (1000*60*60*24));
+      const hours = Math.floor((diff/ (1000*60*60))%24);
+      const minutes = Math.floor((diff/ (1000*60))%60);
+      const seconds = Math.floor((diff/1000)%60);
+      document.getElementById('countdown').innerHTML = `
+        <div class="box"><div class="num">${days}</div><div style="font-size:12px;color:var(--muted)">Days</div></div>
+        <div class="box"><div class="num">${hours}</div><div style="font-size:12px;color:var(--muted)">Hours</div></div>
+        <div class="box"><div class="num">${minutes}</div><div style="font-size:12px;color:var(--muted)">Mins</div></div>
+        <div class="box"><div class="num">${seconds}</div><div style="font-size:12px;color:var(--muted)">Secs</div></div>`;
+    }
+    setInterval(updateCountdown,1000); updateCountdown();
+
+    // Simple RSVP handler - this just shows a message and prepares an email link
+    function handleRSVP(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const attend = document.getElementById('attend').value;
+      const guests = document.getElementById('guests').value;
+      const message = document.getElementById('message').value.trim();
+      const body = encodeURIComponent(`RSVP from: ${name}\nPhone: ${phone}\nAttending: ${attend}\nGuests: ${guests}\nMessage: ${message}`);
+      // mailto fallback - replace email@example.com with your wedding email
+      const mailto = `mailto:email@example.com?subject=Wedding RSVP - ${encodeURIComponent(name)}&body=${body}`;
+      document.getElementById('rsvpMessage').innerText = 'Thank you! A draft email has been prepared. Please send it to confirm your RSVP.';
+      window.location.href = mailto;
+      return false;
+    }
+  </script>
+</body>
+</html>
