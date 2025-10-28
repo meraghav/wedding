@@ -130,43 +130,31 @@
               <div class="title">Haldi Ceremony</div>
               <div>📅 November 22, 2025 • 🕛 7:00 PM</div>
               <div>📍 At Our Residance</div>
-              <div>Dress Code: Ethnic Elegance</div>
+              <div>Dress Code: Yellow Ethnic Elegance</div>
             </div>
             <div class="event-card">
               <div class="title">Mehndi Ceremony</div>
               <div>📅 November 23, 2025 • 🕛 4:00 PM</div>
               <div>📍 At Our Residance</div>
-              <div>Dress Code: Ethnic Elegance</div>
+              <div>Dress Code: Green Ethnic Elegance</div>
             </div>
             <div class="event-card">
               <div class="title">Sangeet Night</div>
               <div>📅 November 23, 2025 • 🕛 7:00 PM</div>
               <div>📍 At Our Residance</div>
-              <div>Dress Code: Ethnic Elegance</div>
+              <div>Dress Code: Black Ethnic Elegance</div>
             </div>
             <div class="event-card">
               <div class="title">Wedding Ceremony</div>
               <div>📅 December 15, 2025 • 🕛 11:00 AM (Baraat) | 1:00 PM (Pheras)</div>
-              <div>📍 Taj Convention Center, Agra</div>
-              <div>Dress Code: Ethnic Elegance</div>
+              <div>📍 Raghunathpur, Samastipur</div>
             </div>
             <div class="event-card">
               <div class="title">Reception</div>
               <div>📅 December 16, 2025 • 🕗 8:00 PM</div>
-              <div>📍 Jaypee Palace Hotel, Agra</div>
-              <div>Dress Code: Formal</div>
+              <div>📍 At Our Residence</div>
             </div>
           </div>
-        </article>
-
-        <article id="gallery" class="card" style="margin-top:16px">
-          <h2>Gallery</h2>
-          <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1520975917363-4b0d413c5b3a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=9b8a1f4d8b7f6c1c4e" alt="engagement">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8f0b7f34a1d5a2a5f1" alt="prewedding">
-            <img src="https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f4e9b6b5a6f3f9c6a"></img>
-          </div>
-        </article>
 
       </section>
 
@@ -183,8 +171,8 @@
           <h2>Travel &amp; Stay</h2>
           <p><strong>Nearest Airport:</strong> Darbhanga Airport<br>
           <strong>Nearest Railway:</strong> Samastipur Jn.</p>
-          <p><strong>Hotels:</strong><br>Hotel Clarks Shiraz<br>Jaypee Palace Hotel<br>Radisson Blu</p>
-          <p>Shuttle service will be arranged from <em>Jaypee Palace</em> to the wedding venue.</p>
+          <p><strong> Wedding Venue:</strong><br>Raghunathpur, Samastipur</p>
+          <p>Procession vehicle will be arranged from <em>Kundal</em> to the wedding venue.</p>
           <div style="margin-top:10px"><a href="https://www.google.com/maps" target="_blank">Open map &rarr;</a></div>
         </div>
 
@@ -193,12 +181,6 @@
           <form class="rsvp" onsubmit="return handleRSVP(event)">
             <input type="text" id="name" placeholder="Your full name" required>
             <input type="tel" id="phone" placeholder="Phone number" required>
-            <select id="attend" required>
-              <option value="">Will you attend?</option>
-              <option value="yes">Yes, I will attend</option>
-              <option value="no">No, unable to attend</option>
-            </select>
-            <input type="number" id="guests" placeholder="Number of guests (including you)" min="1" value="1" required>
             <textarea id="message" rows="3" placeholder="Message or wishes (optional)"></textarea>
             <button class="cta" type="submit">Confirm RSVP</button>
             <div id="rsvpMessage" style="font-size:14px;color:var(--muted);margin-top:8px"></div>
@@ -239,10 +221,8 @@
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      const attend = document.getElementById('attend').value;
-      const guests = document.getElementById('guests').value;
       const message = document.getElementById('message').value.trim();
-      const body = encodeURIComponent(`RSVP from: ${name}\nPhone: ${phone}\nAttending: ${attend}\nGuests: ${guests}\nMessage: ${message}`);
+      const body = encodeURIComponent(`RSVP from: ${name}\nPhone: ${phone}\nMessage: ${message}`);
       // mailto fallback - rahulroot0@gmail.com with your wedding email
       const mailto = `mailto:rahulroot0@gmail.com?subject=Wedding RSVP - ${encodeURIComponent(name)}&body=${body}`;
       document.getElementById('rsvpMessage').innerText = 'Thank you! A draft email has been prepared. Please send it to confirm your RSVP.';
@@ -252,6 +232,7 @@
   </script>
 </body>
 </html>
+
 
 
 
